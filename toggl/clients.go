@@ -38,7 +38,7 @@ type WorkspaceClientResponse struct {
 
 // WorkspaceClientCreate represents posted data to be sent to clients endpoint.
 type WorkspaceClientCreate struct {
-	User *WorkspaceClient `json:"client,omitempty"`
+	Client *WorkspaceClient `json:"client,omitempty"`
 }
 
 // List visible clients to the user.
