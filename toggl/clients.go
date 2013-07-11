@@ -58,6 +58,9 @@ func (s *ClientsService) List() ([]WorkspaceClient, error) {
 	return *data, err
 }
 
+// ListClientProjects lists client projects.
+//
+// Toggl API docs: https://github.com/toggl/toggl_api_docs/blob/master/chapters/clients.md#get-client-projects
 func (s *ClientsService) ListClientProjects(id int) ([]Project, error) {
 	u := fmt.Sprintf("clients/%v/projects", id)
 
