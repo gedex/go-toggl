@@ -6,8 +6,6 @@
 package toggl
 
 import (
-	"errors"
-	"fmt"
 	"time"
 )
 
