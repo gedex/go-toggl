@@ -58,7 +58,7 @@ func (s *ClientsService) List() ([]WorkspaceClient, error) {
 	return *data, err
 }
 
-// Get client details.
+// Get client details by client_id.
 //
 // Toggl API docs: https://github.com/toggl/toggl_api_docs/blob/master/chapters/clients.md#get-client-details
 func (s *ClientsService) Get(id int) (*WorkspaceClient, error) {
