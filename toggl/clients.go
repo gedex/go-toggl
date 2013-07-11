@@ -58,6 +58,20 @@ func (s *ClientsService) List() ([]WorkspaceClient, error) {
 	return *data, err
 }
 
+func (s *ClientsService) ListClientProjects(id int) ([]Project, error) {
+	u := fmt.Sprintf("clients/%v/projects", id)
+
+	req, err := s.client.NewRequest("GET", u, nil)
+	if err != nil {
+		return nil, err
+	}
+
+	data := new([]Project)
+	_, err = s.client.Do(req, data)
+
+	return *data, err
+}
+
 // Get client details by client_id.
 //
 // Toggl API docs: https://github.com/toggl/toggl_api_docs/blob/master/chapters/clients.md#get-client-details
