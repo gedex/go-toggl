@@ -102,5 +102,17 @@ func (s *ProjectsService) Update(p *Project) (*Project, error) {
 	return data.Data, err
 }
 
-// Todo:
-// Projects.ProjectUsers(projectID int)
+// ProjectUsers gets project users.
+//
+// Toggl API docs: https://github.com/toggl/toggl_api_docs/blob/master/chapters/projects.md#get-project-users
+func (s *ProjectsService) ProjectUsers(id int) ([]ProjectUser, error) {
+	u := fmt.Sprintf("projects/%v/project_users", id)
+	req, err := s.client.NewRequest("GET", u, nil)
+	if err != nil {
+		return nil, err
+	}
+
+	data := new([]ProjectUser)
+	_, err = s.client.Do(req, data)
+	return *data, err
+}
