@@ -51,7 +51,7 @@ type Client struct {
 	Projects     *ProjectsService
 	ProjectUsers *ProjectUsersService
 	Tags         *TagsService
-	// Tasks *TasksService
+	Tasks        *TasksService
 	// TimeEntries *TimeEntriesService
 	// Users *UsersService
 	Workspaces *WorkspacesService
@@ -76,7 +76,7 @@ func NewClient(apiToken string) *Client {
 	c.Projects = &ProjectsService{client: c}
 	c.ProjectUsers = &ProjectUsersService{client: c}
 	c.Tags = &TagsService{client: c}
-	// c.Tasks = &TasksService{client: c}
+	c.Tasks = &TasksService{client: c}
 	// c.TimeEntries = &TimeEntriesService{client: c}
 	// c.Users = &UsersService{client: c}
 	c.Workspaces = &WorkspacesService{client: c}
