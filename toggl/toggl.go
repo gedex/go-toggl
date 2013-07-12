@@ -47,9 +47,9 @@ type Client struct {
 	// Services used for talking to differents parts of the API.
 	Users *UsersService
 	// TOOD:
-	Clients  *ClientsService
-	Projects *ProjectsService
-	// ProjectUsers *ProjectUsersService
+	Clients      *ClientsService
+	Projects     *ProjectsService
+	ProjectUsers *ProjectUsersService
 	// Tags *TagsService
 	// Tasks *TasksService
 	// TimeEntries *TimeEntriesService
@@ -74,7 +74,7 @@ func NewClient(apiToken string) *Client {
 	c.Users = &UsersService{client: c}
 	c.Clients = &ClientsService{client: c}
 	c.Projects = &ProjectsService{client: c}
-	// c.ProjectUsers = &ProjectUsersService{client: c}
+	c.ProjectUsers = &ProjectUsersService{client: c}
 	// c.Tags = &TagsService{client: c}
 	// c.Tasks = &TasksService{client: c}
 	// c.TimeEntries = &TimeEntriesService{client: c}
