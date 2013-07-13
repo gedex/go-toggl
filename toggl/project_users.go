@@ -27,7 +27,7 @@ type ProjectUser struct {
 	WorkspaceID int        `json:"wid,omitempty"`
 	Manager     bool       `json:"manager,omitempty"`
 	Rate        float64    `json:"rate,omitempty"`
-	At          *time.Time `json:"time,omitempty"`
+	At          *time.Time `json:"at,omitempty"`
 }
 
 // ProjectUserMultipleUserID represents a project user where UID is a string which can hold
@@ -39,7 +39,7 @@ type ProjectUserMultipleUserID struct {
 	WorkspaceID int        `json:"wid,omitempty"`
 	Manager     bool       `json:"manager,omitempty"`
 	Rate        float64    `json:"rate,omitempty"`
-	At          *time.Time `json:"time,omitempty"`
+	At          *time.Time `json:"at,omitempty"`
 }
 
 // ProjectUserResponse acts as a response wrapper where response returns
