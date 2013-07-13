@@ -46,3 +46,13 @@ func testMethod(t *testing.T, r *http.Request, want string) {
 		t.Errorf("Request method = %v, want %v", r.Method, want)
 	}
 }
+
+type values map[string]string
+
+func testFormValues(t *testing.T, r *http.Request, values values) {
+	for key, want := range values {
+		if v := r.FormValue(key); v != want {
+			t.Errorf("Request parameter %v = %v, want %v", key, v, want)
+		}
+	}
+}
