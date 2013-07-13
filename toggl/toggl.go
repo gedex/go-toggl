@@ -45,17 +45,15 @@ type Client struct {
 	UserAgent string
 
 	// Services used for talking to differents parts of the API.
-	Users *UsersService
-	// TOOD:
-	Clients      *ClientsService
-	Projects     *ProjectsService
-	ProjectUsers *ProjectUsersService
-	Tags         *TagsService
-	Tasks        *TasksService
-	TimeEntries  *TimeEntriesService
-	// Users *UsersService
-	Workspaces *WorkspacesService
-	// WorkspaceUsers *WorkspaceUsersService
+	Users          *UsersService
+	Clients        *ClientsService
+	Projects       *ProjectsService
+	ProjectUsers   *ProjectUsersService
+	Tags           *TagsService
+	Tasks          *TasksService
+	TimeEntries    *TimeEntriesService
+	Workspaces     *WorkspacesService
+	WorkspaceUsers *WorkspaceUsersService
 }
 
 // NewClient returns a new Toggl API client. Expects user's api token
@@ -78,9 +76,8 @@ func NewClient(apiToken string) *Client {
 	c.Tags = &TagsService{client: c}
 	c.Tasks = &TasksService{client: c}
 	c.TimeEntries = &TimeEntriesService{client: c}
-	// c.Users = &UsersService{client: c}
 	c.Workspaces = &WorkspacesService{client: c}
-	// c.WorkspaceUsers = &WorkspaceUsersService{client: c}
+	c.WorkspaceUsers = &WorkspaceUsersService{client: c}
 
 	return c
 }

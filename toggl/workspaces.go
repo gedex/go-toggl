@@ -75,6 +75,42 @@ func (s *WorkspacesService) ListClients(id int) ([]WorkspaceClient, error) {
 	return *data, err
 }
 
-// TODO:
-// Workspaces.ListProjects
-// Workspaces.ListTasks
+// ListProjects returns list of projects on specified workspace id.
+//
+// Toggl API docs: https://github.com/toggl/toggl_api_docs/blob/master/chapters/workspaces.md#get-workspace-projects
+func (s *WorkspacesService) ListProjects(id int, filter string) ([]Project, error) {
+	u := fmt.Sprintf("workspaces/%v/projects", id)
+	if filter != "" {
+		u += "?filter=" + filter
+	}
+
+	req, err := s.client.NewRequest("GET", u, nil)
+	if err != nil {
+		return nil, err
+	}
+
+	data := new([]Project)
+	_, err = s.client.Do(req, data)
+
+	return *data, err
+}
+
+// ListTasks returns list of tasks on specified workspace id.
+//
+// Toggl API docs: https://github.com/toggl/toggl_api_docs/blob/master/chapters/workspaces.md#get-workspace-tasks
+func (s *WorkspacesService) ListTasks(id int, filter string) ([]Task, error) {
+	u := fmt.Sprintf("workspaces/%v/tasks", id)
+	if filter != "" {
+		u += "?filter=" + filter
+	}
+
+	req, err := s.client.NewRequest("GET", u, nil)
+	if err != nil {
+		return nil, err
+	}
+
+	data := new([]Task)
+	_, err = s.client.Do(req, data)
+
+	return *data, err
+}
