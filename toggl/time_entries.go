@@ -42,7 +42,7 @@ type TimeEntryResponse struct {
 	Data *TimeEntry `json:"data,omitempty"`
 }
 
-// TimeEntry represents posted data to be sent to time entries endpoint.
+// TimeEntryCreate represents posted data to be sent to time entries endpoint.
 type TimeEntryCreate struct {
 	TimeEntry *TimeEntry `json:"time_entry,omitempty"`
 }
