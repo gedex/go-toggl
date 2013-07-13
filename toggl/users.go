@@ -65,10 +65,9 @@ type User struct {
 	// Timestamp of last changes, e.g. "2013-03-06T12:18:42+00:00"
 	At *time.Time `json:"at,omitempty"`
 
-	// TODO
-	// time_entries []
-	// projects []
-	// tags []
+	TimeEntries []TimeEntry `json:"time_entries,omitempty"`
+	Projects    []Project   `json:"projects,omitempty"`
+	Tags        []Tag       `json:"tags,omitempty"`
 	// workspaces []
 	// clients []
 }
