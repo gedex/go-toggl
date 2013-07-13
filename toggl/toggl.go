@@ -4,7 +4,26 @@
 // license that can be found in the LICENSE file.
 
 /*
-TODO: Document this example header.
+Package toggl provides a client for using the Toggl API v8.
+
+Access different parts of Toggl API using the various services on a Toggl
+Client (which requires api token string on the first parameter):
+
+	c := toggl.NewClient("YOUR_API_TOKEN")
+
+With client object set, you can call Toggl endpoints:
+
+	// Get list of workspaces
+	ws, err := c.Workspaces.List()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error: %s\n", err)
+	}
+
+  for _, w := range ws {
+		fmt.Println(w.ID, w.Name)
+  }
+
+The full Toggl API is documented at https://github.com/toggl/toggl_api_docs/.
 */
 
 package toggl
