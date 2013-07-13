@@ -12,11 +12,11 @@ import (
 )
 
 const (
-	accessToken = "9aeebc52e0e4651f38b93cc93d7a655c"
+	apiToken = "YOUR_API_TOKEN"
 )
 
 func main() {
-	c := toggl.NewClient("9aeebc52e0e4651f38b93cc93d7a655c")
+	c := toggl.NewClient(apiToken)
 	ws, err := c.Workspaces.List()
 	checkError(err)
 

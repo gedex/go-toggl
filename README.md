@@ -3,6 +3,9 @@ go-toggl
 
 go-toggl is Go library for accessing Toggl API.
 
+**Documentation:** <http://godoc.org/github.com/gedex/go-toggl/toggl>
+**Build Status:** [![Build Status](https://travis-ci.org/gedex/go-toggl.png?branch=master)](https://travis-ci.org/gedex/go-toggl)
+
 ## Basic Usage
 
 ~~~go
