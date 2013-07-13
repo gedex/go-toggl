@@ -45,13 +45,13 @@ type Client struct {
 	UserAgent string
 
 	// Services used for talking to differents parts of the API.
-	Users          *UsersService
 	Clients        *ClientsService
 	Projects       *ProjectsService
 	ProjectUsers   *ProjectUsersService
 	Tags           *TagsService
 	Tasks          *TasksService
 	TimeEntries    *TimeEntriesService
+	Users          *UsersService
 	Workspaces     *WorkspacesService
 	WorkspaceUsers *WorkspaceUsersService
 }
@@ -69,13 +69,13 @@ func NewClient(apiToken string) *Client {
 		BaseURL:   baseURL,
 		UserAgent: UserAgent,
 	}
-	c.Users = &UsersService{client: c}
 	c.Clients = &ClientsService{client: c}
 	c.Projects = &ProjectsService{client: c}
 	c.ProjectUsers = &ProjectUsersService{client: c}
 	c.Tags = &TagsService{client: c}
 	c.Tasks = &TasksService{client: c}
 	c.TimeEntries = &TimeEntriesService{client: c}
+	c.Users = &UsersService{client: c}
 	c.Workspaces = &WorkspacesService{client: c}
 	c.WorkspaceUsers = &WorkspaceUsersService{client: c}
 
