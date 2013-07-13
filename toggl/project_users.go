@@ -11,10 +11,10 @@ import (
 	"time"
 )
 
-// ProjectUsersService handles communication with the workspace related
+// ProjectUsersService handles communication with the project_users related
 // methods of the Toggl API.
 //
-// Toggl API docs: https://github.com/toggl/toggl_api_docs/blob/master/chapters/workspaces.md
+// Toggl API docs: https://github.com/toggl/toggl_api_docs/blob/master/chapters/project_users.md
 type ProjectUsersService struct {
 	client *Client
 }
@@ -30,7 +30,7 @@ type ProjectUser struct {
 	At          *time.Time `json:"time,omitempty"`
 }
 
-// ProjectUserMultipleID represents a project user where UID is a string which can hold
+// ProjectUserMultipleUserID represents a project user where UID is a string which can hold
 // multiple IDs separated by comma.
 type ProjectUserMultipleUserID struct {
 	ID          int        `json:"id,omitempty"`
@@ -43,7 +43,7 @@ type ProjectUserMultipleUserID struct {
 }
 
 // ProjectUserResponse acts as a response wrapper where response returns
-// in format of "data": Project's object.
+// in format of "data": ProjectUser's object.
 type ProjectUserResponse struct {
 	Data *ProjectUser `json:"data,omitempty"`
 }
@@ -102,17 +102,17 @@ func (s *ProjectUsersService) MassCreate(pu *ProjectUserMultipleUserID) ([]Proje
 // Update a project user.
 //
 // Toggl API docs: https://github.com/toggl/toggl_api_docs/blob/master/chapters/project_users.md#update-a-project-user
-func (s *ProjectUsersService) Update(c *ProjectUser) (*ProjectUser, error) {
-	if c == nil {
+func (s *ProjectUsersService) Update(pu *ProjectUser) (*ProjectUser, error) {
+	if pu == nil {
 		return nil, errors.New("ProjectUser cannot be nil")
 	}
-	if c.ID <= 0 {
+	if pu.ID <= 0 {
 		return nil, errors.New("Invalid ProjectUser.ID")
 	}
 
-	u := fmt.Sprintf("project_users/%v", c.ID)
+	u := fmt.Sprintf("project_users/%v", pu.ID)
 
-	puc := &ProjectUserCreate{c}
+	puc := &ProjectUserCreate{pu}
 	req, err := s.client.NewRequest("PUT", u, puc)
 	if err != nil {
 		return nil, err
