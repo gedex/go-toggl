@@ -28,7 +28,7 @@ type Task struct {
 	WorkspaceID      int        `json:"wid,omitempty"`
 	EstimatedSeconds int        `json:"estimated_seconds,omitempty"`
 	Active           bool       `json:"active,omitempty"`
-	At               *time.Time `json:"time,omitempty"`
+	At               *time.Time `json:"at,omitempty"`
 }
 
 // TaskResponse acts as a response wrapper where response returns
