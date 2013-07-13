@@ -39,7 +39,7 @@ type TaskResponse struct {
 
 // TaskMassResponse acts as a response wrapper where response returns
 // in format of "data": [ ... ].
-type TaskMaskResponse struct {
+type TaskMassResponse struct {
 	Data []Task `json:"data,omitempty"`
 }
 
@@ -118,7 +118,7 @@ func (s *TasksService) MassUpdate(ids string, t *Task) ([]Task, error) {
 		return nil, err
 	}
 
-	data := new(TaskMaskResponse)
+	data := new(TaskMassResponse)
 	_, err = s.client.Do(req, data)
 
 	return data.Data, err
