@@ -11,10 +11,10 @@ import (
 	"time"
 )
 
-// ProjectsService handles communication with the workspace related
+// ProjectsService handles communication with the projects related
 // methods of the Toggl API.
 //
-// Toggl API docs: https://github.com/toggl/toggl_api_docs/blob/master/chapters/workspaces.md
+// Toggl API docs: https://github.com/toggl/toggl_api_docs/blob/master/chapters/projects.md
 type ProjectsService struct {
 	client *Client
 }
@@ -46,7 +46,7 @@ type ProjectCreate struct {
 
 // Create a project.
 //
-// https://github.com/toggl/toggl_api_docs/blob/master/chapters/projects.md#create-project
+// Toggl API docs: https://github.com/toggl/toggl_api_docs/blob/master/chapters/projects.md#create-project
 func (s *ProjectsService) Create(p *Project) (*Project, error) {
 	u := "projects"
 	pc := &ProjectCreate{Project: p}
