@@ -19,7 +19,7 @@ type ClientsService struct {
 	client *Client
 }
 
-// Client represents client of user's workspace.
+// WorkspaceClient represents client of user's workspace.
 type WorkspaceClient struct {
 	ID          int        `json:"id,omitempty"`
 	WorkspaceID int        `json:"wid,omitempty"`
@@ -93,11 +93,11 @@ func (s *ClientsService) Get(id int) (*WorkspaceClient, error) {
 
 // Create a new client in specified workspace.
 //
-// https://github.com/toggl/toggl_api_docs/blob/master/chapters/clients.md#create-a-client
-func (s *ClientsService) Create(c *WorkspaceClient) (*WorkspaceClient, error) {
+// Toggl API docs: https://github.com/toggl/toggl_api_docs/blob/master/chapters/clients.md#create-a-client
+func (s *ClientsService) Create(wc *WorkspaceClient) (*WorkspaceClient, error) {
 	u := "clients"
-	us := &WorkspaceClientCreate{c}
-	req, err := s.client.NewRequest("POST", u, us)
+	wcc := &WorkspaceClientCreate{wc}
+	req, err := s.client.NewRequest("POST", u, wcc)
 	if err != nil {
 		return nil, err
 	}
@@ -111,18 +111,18 @@ func (s *ClientsService) Create(c *WorkspaceClient) (*WorkspaceClient, error) {
 // Update a client.
 //
 // Toggl API docs: https://github.com/toggl/toggl_api_docs/blob/master/chapters/clients.md#update-a-client
-func (s *ClientsService) Update(c *WorkspaceClient) (*WorkspaceClient, error) {
-	if c == nil {
+func (s *ClientsService) Update(wc *WorkspaceClient) (*WorkspaceClient, error) {
+	if wc == nil {
 		return nil, errors.New("WorkspaceClient cannot be nil")
 	}
-	if c.ID <= 0 {
+	if wc.ID <= 0 {
 		return nil, errors.New("Invalid WorkspaceClient.ID")
 	}
 
-	u := fmt.Sprintf("clients/%v", c.ID)
+	u := fmt.Sprintf("clients/%v", wc.ID)
 
-	us := &WorkspaceClientCreate{c}
-	req, err := s.client.NewRequest("PUT", u, us)
+	wcc := &WorkspaceClientCreate{wc}
+	req, err := s.client.NewRequest("PUT", u, wcc)
 	if err != nil {
 		return nil, err
 	}
