@@ -181,3 +181,23 @@ func TestTimeEntriesService_List(t *testing.T) {
 		t.Errorf("TimeEntries.List returned %v, want %v", result, want)
 	}
 }
+
+func TestTimeEntriesService_Current(t *testing.T) {
+	setup()
+	defer teardown()
+
+	mux.HandleFunc("/time_entries/current", func(w http.ResponseWriter, r *http.Request) {
+		testMethod(t, r, "GET")
+		fmt.Fprint(w, `{"data": {"id": 1}}`)
+	})
+
+	result, err := client.TimeEntries.Current()
+	if err != nil {
+		t.Errorf("TimeEntries.Current returned error: %v", err)
+	}
+
+	want := &TimeEntry{ID: 1}
+	if !reflect.DeepEqual(result, want) {
+		t.Errorf("TimeEntries.Current returned %v, want %v", result, want)
+	}
+}

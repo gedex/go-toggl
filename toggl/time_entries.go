@@ -180,3 +180,19 @@ func (s *TimeEntriesService) List(start, end *time.Time) ([]TimeEntry, error) {
 
 	return *data, err
 }
+
+// Get running time entry.
+//
+// Toggl API docs: https://github.com/toggl/toggl_api_docs/blob/master/chapters/time_entries.md#get-running-time-entry
+func (s *TimeEntriesService) Current() (*TimeEntry, error) {
+	u := "time_entries/current"
+	req, err := s.client.NewRequest("GET", u, nil)
+	if err != nil {
+		return nil, err
+	}
+
+	data := new(TimeEntryResponse)
+	_, err = s.client.Do(req, data)
+
+	return data.Data, err
+}
