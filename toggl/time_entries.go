@@ -33,7 +33,7 @@ type TimeEntry struct {
 	CreatedWith string     `json:"created_with,omitempty"`
 	Tags        []string   `json:"tags,omitempty"`
 	Duronly     bool       `json:"duronly,omitempty"`
-	At          int        `json:"at,omitempty"`
+	At          *time.Time `json:"at,omitempty"`
 }
 
 // TimeEntryResponse acts as a response wrapper where response returns
